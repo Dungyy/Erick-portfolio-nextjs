@@ -2,6 +2,8 @@
   "name": "portfolio-nextjs",
   "version": "0.1.0",
   "private": true,
+  "description": "My portfolio website built with Next.js and Tailwind CSS.",
+  "author": "Erick Munoz",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -9,15 +11,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "framer-motion": "^12.6.5",
+    "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.0"
+    "react-icons": "^5.5.0",
+    "react-typed": "^2.0.12"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "15.3.0",
-    "@eslint/eslintrc": "^3"
+    "eslint-config-next": "15.3.0"
   }
 }
