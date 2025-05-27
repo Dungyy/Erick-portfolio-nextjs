@@ -1,7 +1,6 @@
-// src/components/sections/Hero.js - Fixed Retro-themed Hero Section
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import RetroButton from '@/components/ui/RetroButton';
 
@@ -15,12 +14,16 @@ const Hero = () => {
     const [mounted, setMounted] = useState(false);
 
     // Typed strings for the developer roles 
-    const typedStrings = [
+    const typedStrings = useMemo(() => [
         'Software Developer',
         'Full-Stack Developer',
-        'MERN Stack Expert',
+        'Freelancer & Consultant',
+        'MERN Stack Developer',
         'Security Specialist',
-    ];
+        'Web Developer',
+        'Open Source Contributor',
+        'Tech Enthusiast',
+    ], []);
 
     // Check if component is mounted (for SSR compatibility)
     useEffect(() => {
@@ -56,7 +59,7 @@ const Hero = () => {
         }
 
         return () => clearTimeout(timeout);
-    }, [displayText, isTyping, currentRoleIndex, commandLineVisible, mounted]);
+    }, [displayText, isTyping, currentRoleIndex, commandLineVisible, mounted, typedStrings]);
 
     // Boot sequence effect
     useEffect(() => {
@@ -65,23 +68,23 @@ const Hero = () => {
         // Start boot sequence
         const bootTimer1 = setTimeout(() => {
             setBootSequence(2);
-        }, 800);
+        }, 1800);
 
         const bootTimer2 = setTimeout(() => {
             setBootSequence(3);
-        }, 1600);
+        }, 2600);
 
         const bootTimer3 = setTimeout(() => {
             setBootSequence(4);
-        }, 2400);
+        }, 4400);
 
         const bootTimer4 = setTimeout(() => {
             setBootComplete(true);
-        }, 3200);
+        }, 6200);
 
         const commandLineTimer = setTimeout(() => {
             setCommandLineVisible(true);
-        }, 3600);
+        }, 7850);
 
         return () => {
             clearTimeout(bootTimer1);
@@ -113,7 +116,7 @@ const Hero = () => {
             <div
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{
-                    backgroundImage: "url('/img/pexels-roberto-nickson-2885320.jpg')",
+                    backgroundImage: "url('/public/img/pexels-roberto-nickson-2885320.jpg')",
                     backgroundBlendMode: "overlay"
                 }}
             >
@@ -153,9 +156,9 @@ const Hero = () => {
 
                     {/* Main content - visible after "boot" */}
                     {bootComplete && (
-                        <div className="space-y-8">
+                        <div className="space-y-8 p-6 bg-dark/80">
                             <div
-                                className="inline-block bg-accent p-2 font-mono text-white text-sm animate-fade-in"
+                                className="inline-block bg-accent p-2 font-mono text-white text-sm animate-fade-in hover:border-2 hover:border-black hover:rounded-lg  duration-200"
                                 style={{ animationDelay: "200ms" }}
                             >
                                 <span className="animate-blink">█</span> PORTFOLIO OS v2.0.25
@@ -170,7 +173,7 @@ const Hero = () => {
 
                             {commandLineVisible && (
                                 <div
-                                    className="retro-terminal p-4 mb-6 animate-fade-in"
+                                    className="retro-terminal p-4 mb-6 animate-fade-in hover:border hover:border-black hover:rounded-md duration-200"
                                     style={{ animationDelay: "600ms" }}
                                 >
                                     <div className="flex items-center">
@@ -193,13 +196,13 @@ const Hero = () => {
                             </p>
 
                             <div
-                                className="flex flex-wrap gap-4 animate-fade-in"
+                                className="flex flex-wrap gap-4 animate-fade-in "
                                 style={{ animationDelay: "1000ms" }}
                             >
-                                <RetroButton href="#portfolio">
-                                    <i className="fas fa-folder-open mr-2"></i> VIEW_WORK.exe
+                                <RetroButton href="#portfolio" className="hover:border-2 hover:border-black hover:rounded-lg p-1" primary>
+                                    <i className="fas fa-folder-open mr-2 "></i> VIEW_WORK.exe
                                 </RetroButton>
-                                <RetroButton href="#contact" secondary>
+                                <RetroButton href="#contact" className="hover:border-2 hover:border-black hover:rounded-lg p-1" secondary>
                                     <i className="fas fa-paper-plane mr-2"></i> CONTACT.exe
                                 </RetroButton>
                             </div>
