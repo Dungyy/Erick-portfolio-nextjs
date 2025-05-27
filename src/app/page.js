@@ -1,20 +1,20 @@
-// src/app/page.js - Complete home page with retro styling
+// src/app/page.js - Updated for ES Modules
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Header from '@/components/layout/Header';
-import Hero from '@/components/sections/Hero';
-import About from '@/components/sections/About';
-import Skills from '@/components/sections/Skills';
-import Portfolio from '@/components/sections/Portfolio';
-import Resume from '@/components/sections/Resume';
-import Contact from '@/components/sections/Contact';
-import Footer from '@/components/layout/Footer';
-import BackToTop from '@/components/ui/BackToTop';
-
-// Import AOS for scroll animations
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+// Update imports with .js extension for ES modules compatibility
+import Header from '@/components/layout/Header.js';
+import Hero from '@/components/sections/Hero.js';
+import About from '@/components/sections/About.js';
+import Skills from '@/components/sections/Skills.js';
+import Portfolio from '@/components/sections/Portfolio.js';
+import Resume from '@/components/sections/Resume.js';
+import Contact from '@/components/sections/Contact.js';
+import Footer from '@/components/layout/Footer.js';
+import BackToTop from '@/components/ui/BackToTop.js';
 
 export default function Home() {
   // Reference for the cursor sound effect
@@ -122,7 +122,7 @@ export default function Home() {
       <div className="fixed bottom-0 right-0 w-6 h-6 border-b-3 border-r-3 border-accent"></div>
 
       {/* Hidden audio for click sound effect */}
-      <audio ref={audioRef} src="/sounds/click.mp3" preload="auto" />
+      {/* <audio ref={audioRef} src="/sounds/click.mp3" preload="auto" /> */}
 
       {/* Easter egg: Konami code listener (will add special effect when activated) */}
       <div id="konami-easter-egg" className="hidden">

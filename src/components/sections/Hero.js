@@ -1,15 +1,18 @@
-// src/components/sections/Hero.js - Retro-themed Hero Section
+// src/components/sections/Hero.js - Fixed Retro-themed Hero Section
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Typed from 'react-typed';
 import RetroButton from '@/components/ui/RetroButton';
 
 const Hero = () => {
     const [bootComplete, setBootComplete] = useState(false);
     const [bootSequence, setBootSequence] = useState(1);
     const [commandLineVisible, setCommandLineVisible] = useState(false);
+    const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+    const [displayText, setDisplayText] = useState('');
+    const [isTyping, setIsTyping] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     // Typed strings for the developer roles 
     const typedStrings = [
@@ -19,8 +22,46 @@ const Hero = () => {
         'Security Specialist',
     ];
 
+    // Check if component is mounted (for SSR compatibility)
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Custom typing effect
+    useEffect(() => {
+        if (!commandLineVisible || !mounted) return;
+
+        let timeout;
+        const currentString = typedStrings[currentRoleIndex];
+
+        if (isTyping) {
+            if (displayText.length < currentString.length) {
+                timeout = setTimeout(() => {
+                    setDisplayText(currentString.slice(0, displayText.length + 1));
+                }, 80);
+            } else {
+                timeout = setTimeout(() => {
+                    setIsTyping(false);
+                }, 1500);
+            }
+        } else {
+            if (displayText.length > 0) {
+                timeout = setTimeout(() => {
+                    setDisplayText(displayText.slice(0, -1));
+                }, 50);
+            } else {
+                setCurrentRoleIndex((prev) => (prev + 1) % typedStrings.length);
+                setIsTyping(true);
+            }
+        }
+
+        return () => clearTimeout(timeout);
+    }, [displayText, isTyping, currentRoleIndex, commandLineVisible, mounted]);
+
     // Boot sequence effect
     useEffect(() => {
+        if (!mounted) return;
+
         // Start boot sequence
         const bootTimer1 = setTimeout(() => {
             setBootSequence(2);
@@ -49,7 +90,22 @@ const Hero = () => {
             clearTimeout(bootTimer4);
             clearTimeout(commandLineTimer);
         };
-    }, []);
+    }, [mounted]);
+
+    // Don't render anything until mounted (prevents SSR issues)
+    if (!mounted) {
+        return (
+            <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden">
+                <div className="container mx-auto relative z-10">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="h-96 flex items-center justify-center">
+                            <div className="text-light font-mono">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden">
@@ -120,14 +176,10 @@ const Hero = () => {
                                     <div className="flex items-center">
                                         <span className="text-accent mr-2">$</span>
                                         <span className="mr-2">role:</span>
-                                        <Typed
-                                            strings={typedStrings}
-                                            typeSpeed={80}
-                                            backSpeed={50}
-                                            backDelay={1500}
-                                            loop
-                                            className="text-crt"
-                                        />
+                                        <span className="text-crt">
+                                            {displayText}
+                                            <span className="animate-blink ml-1">|</span>
+                                        </span>
                                     </div>
                                 </div>
                             )}
