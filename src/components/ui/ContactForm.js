@@ -1,8 +1,6 @@
-// src/components/ui/ContactForm.js
 'use client';
 
 import { useState } from 'react';
-import RetroButton from './RetroButton';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -29,24 +27,22 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Form validation
         if (!formData.name || !formData.email || !formData.message) {
             setFormStatus({
                 isSubmitting: false,
                 isSubmitted: true,
-                message: 'Please fill in all fields',
+                message: '! ERROR: Please fill in all fields',
                 success: false
             });
             return;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             setFormStatus({
                 isSubmitting: false,
                 isSubmitted: true,
-                message: 'Please enter a valid email address',
+                message: '! ERROR: Invalid email address',
                 success: false
             });
             return;
@@ -74,109 +70,88 @@ const ContactForm = () => {
                 setFormStatus({
                     isSubmitting: false,
                     isSubmitted: true,
-                    message: data.message || 'Message sent successfully!',
+                    message: '# SUCCESS: Message sent!',
                     success: true
                 });
-
-                // Reset form
-                setFormData({
-                    name: '',
-                    email: '',
-                    message: ''
-                });
-
-                // Clear success message after 5 seconds
+                setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => {
-                    setFormStatus(prev => ({
-                        ...prev,
-                        isSubmitted: false
-                    }));
+                    setFormStatus(prev => ({ ...prev, isSubmitted: false }));
                 }, 5000);
             } else {
-                throw new Error(data.message || 'Something went wrong');
+                throw new Error(data.message || '! ERROR: Something went wrong');
             }
         } catch (error) {
             setFormStatus({
                 isSubmitting: false,
                 isSubmitted: true,
-                message: error.message || 'Something went wrong. Please try again.',
+                message: `! ERROR: ${error.message}`,
                 success: false
             });
         }
     };
 
     return (
-        <div className="retro-card p-6">
-            {/* Form header with retro styling */}
-            <div className="mb-6 flex items-center">
-                <div className="w-8 h-8 bg-accent text-white font-mono flex items-center justify-center mr-3 shadow-retro-sm">
-                    <i className="fas fa-paper-plane"></i>
-                </div>
-                <h3 className="font-display text-2xl">SEND_MESSAGE.exe</h3>
+        <div className="bg-black text-green-400 font-mono p-4 border border-green-700">
+            <div className="mb-6">
+                <h3 className="text-xl md:text-2xl tracking-wider border-b border-green-600 pb-1 mb-2">
+                    &gt; SEND_MESSAGE.sh
+                </h3>
+                <p className="text-sm text-green-300"># Enter your details below and hit [Enter]</p>
             </div>
 
-            <form onSubmit={handleSubmit}>
-                <div className="space-y-6">
-                    <div>
-                        <label className="font-mono text-dark mb-2 block">NAME:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="retro-input"
-                        />
-                    </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                    <label className="block text-sm mb-1">NAME:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full bg-black border border-green-700 px-3 py-2 text-green-200 placeholder-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+                        placeholder="John Connor"
+                    />
+                </div>
 
-                    <div>
-                        <label className="font-mono text-dark mb-2 block">EMAIL:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="retro-input"
-                        />
-                    </div>
+                <div>
+                    <label className="block text-sm mb-1">EMAIL:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full bg-black border border-green-700 px-3 py-2 text-green-200 placeholder-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+                        placeholder="resistance@skynet.net"
+                    />
+                </div>
 
-                    <div>
-                        <label className="font-mono text-dark mb-2 block">MESSAGE:</label>
-                        <textarea
-                            name="message"
-                            rows="5"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="retro-input resize-none"
-                        ></textarea>
-                    </div>
+                <div>
+                    <label className="block text-sm mb-1">MESSAGE:</label>
+                    <textarea
+                        name="message"
+                        rows="5"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full bg-black border border-green-700 px-3 py-2 text-green-200 placeholder-green-500 resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
+                        placeholder="We need your help..."
+                    />
+                </div>
 
-                                        <div className="text-center">
-                                            <RetroButton
-                                                type="submit"
-                                                disabled={formStatus.isSubmitting}
-                                                className="w-full md:w-auto"
-                                            >
-                                                {formStatus.isSubmitting ? (
-                                                    <span className="flex items-center justify-center">
-                                                        <i className="fas fa-spinner fa-spin mr-2"></i> SENDING...
-                                                    </span>
-                                                ) : (
-                                                    <span className="flex items-center justify-center">
-                                                        <i className="fas fa-paper-plane mr-2"></i> SEND MESSAGE
-                                                    </span>
-                                                )}
-                                            </RetroButton>
-                                        </div>
-                    
-                                        {formStatus.isSubmitted && (
-                                            <div className={`mt-4 p-3 text-center rounded ${formStatus.success ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                                                {formStatus.message}
-                                            </div>
-                                        )}
-                                    </div>
-                                </form>
-                            </div>
-                        );
-                    };
-                    
-                    export default ContactForm;
+                <button
+                    type="submit"
+                    disabled={formStatus.isSubmitting}
+                    className="w-full mt-2 bg-green-800 hover:bg-green-600 text-black font-bold py-2 px-4 transition-all duration-200"
+                >
+                    {formStatus.isSubmitting ? '...sending' : '>> SEND'}
+                </button>
+
+                {formStatus.isSubmitted && (
+                    <div className={`mt-4 text-sm p-3 border-l-4 ${formStatus.success ? 'border-green-400' : 'border-red-500'}`}>
+                        {formStatus.message}
+                    </div>
+                )}
+            </form>
+        </div>
+    );
+};
+
+export default ContactForm;

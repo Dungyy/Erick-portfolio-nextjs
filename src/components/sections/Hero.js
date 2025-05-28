@@ -2,8 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo } from 'react';
-import Link from 'next/link';
-import RetroButton from '@/components/ui/RetroButton';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
     const [bootComplete, setBootComplete] = useState(false);
@@ -229,7 +228,7 @@ const Hero = () => {
     }
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden bg-terminal">
+        <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden">
             <div className="container mx-auto relative z-10">
                 <div className="max-w-6xl mx-auto">
                     {/* Terminal Window */}
@@ -306,40 +305,57 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Action Buttons */}
+                    {/* Terminal Action Buttons */}
                     {bootComplete && (
                         <div className="mt-8 flex flex-wrap gap-4 justify-center">
                             <button
                                 onClick={() => executeCommand('projects')}
-                                className="terminal-button-style bg-secondary hover:bg-secondary/80 text-black px-6 py-3 font-mono rounded transition-colors"
+                                className="terminal-button-style bg-terminal hover:bg-gray-800 text-green-400 px-6 py-3 font-mono rounded border border-green-500/50 transition-colors"
                             >
-                                <span className="mr-2">📁</span> view portfolio
+                                <span className="text-secondary mr-2">$</span> ./view-portfolio
                             </button>
                             <button
                                 onClick={() => executeCommand('contact')}
-                                className="terminal-button-style bg-accent hover:bg-accent/80 text-white px-6 py-3 font-mono rounded transition-colors"
+                                className="terminal-button-style bg-terminal hover:bg-gray-800 text-blue-400 px-6 py-3 font-mono rounded border border-blue-500/50 transition-colors"
                             >
-                                <span className="mr-2">📧</span> start contact
+                                <span className="text-secondary mr-2">$</span> ./contact-me
                             </button>
                             <button
                                 onClick={() => executeCommand('clear')}
-                                className="terminal-button-style bg-gray-600 hover:bg-gray-500 text-white px-6 py-3 font-mono rounded transition-colors"
+                                className="terminal-button-style bg-terminal hover:bg-gray-800 text-red-400 px-6 py-3 font-mono rounded border border-red-500/50 transition-colors"
                             >
-                                <span className="mr-2">🗑️</span> clear
+                                <span className="text-secondary mr-2">$</span> clear
                             </button>
                         </div>
-
                     )}
                     {/* Scroll down indicator */}
-                    <br />
-                    <br />
                     {bootComplete && (
-                        <div className="absolute bottom-100 left-1/2 transform -translate-x-1/2 text-accent mt-11 text-center animate-bounce">
+                        <motion.div
+                            className="absolute bottom-100 left-1/2 transform -translate-x-1/2 text-crt mt-11 "
+                            animate={{
+                                y: [0, -15, 0],
+                                opacity: [0.7, 1, 0.7]
+                            }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        >
                             <div className="flex flex-col">
                                 <span className="text-sm mb-2 font-mono">SCROLL_DOWN</span>
-                                <i className="fas fa-chevron-down"></i>
+                                <motion.div
+                                    animate={{ y: [0, 5, 0] }}
+                                    transition={{
+                                        duration: 1,
+                                        repeat: Infinity,
+                                        repeatType: "reverse"
+                                    }}
+                                >
+                                    <i className="fas fa-chevron-down"></i>
+                                </motion.div>
                             </div>
-                        </div>
+                        </motion.div>
                     )}
                 </div>
             </div>

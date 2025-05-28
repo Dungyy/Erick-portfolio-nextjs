@@ -1,4 +1,3 @@
-// src/components/sections/Portfolio.js (Enhanced with 3D and animations)
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -25,91 +24,74 @@ const Portfolio = () => {
         }
     }, [filter]);
 
-    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
+                staggerChildren: 0.08,
                 delayChildren: 0.3
             }
         }
     };
 
+    const filters = [
+        { label: '*', name: 'all-projects' },
+        { label: 'filter-web', name: 'web-dev' },
+        { label: 'filter-app', name: 'apps' },
+        { label: 'filter-client', name: 'client-work' }
+    ];
+
     return (
-        <section id="portfolio" ref={ref} className="py-16 bg-gradient-to-r from-dark/90 to-dark/80 text-white overflow-hidden">
-            <div className="container mx-auto px-4 ">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-12"
+        <section
+            id="portfolio"
+            ref={ref}
+            className="bg-black text-green-400 font-mono py-16 px-4 min-h-screen"
+        >
+            <div className="max-w-6xl mx-auto">
+                <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-[26px] md:text-[32px] mb-8 border-b border-green-600 pb-2 uppercase tracking-wider"
                 >
-                    <h2 className="text-4xl font-bold mb-5 pb-5 relative text-crt/75">Professional Projects</h2>
-                </motion.div>
+                    ~/projects
+                </motion.h2>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mb-10"
-                >
-                    <div className="flex justify-center flex-wrap gap-2">
-                        <ul className="flex flex-wrap justify-center gap-2">
-                            <motion.li
-                                data-filter="*"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === '*' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
-                                onClick={() => setFilter('*')}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                {/* Filter Section */}
+                <div className="mb-10">
+                    <p className="text-green-300 text-sm mb-2"># filters</p>
+                    <div className="flex flex-wrap gap-4">
+                        {filters.map(({ label, name }) => (
+                            <span
+                                key={label}
+                                className={`cursor-pointer text-sm px-2 py-1 transition-all duration-200 ${filter === label
+                                        ? 'text-green-200 underline'
+                                        : 'hover:text-green-300'
+                                    }`}
+                                onClick={() => setFilter(label)}
                             >
-                                ALL PROJECTS
-                            </motion.li>
-                            <motion.li
-                                data-filter=".filter-web"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-web' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
-                                onClick={() => setFilter('filter-web')}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                WEB DEVELOPMENT
-                            </motion.li>
-                            <motion.li
-                                data-filter=".filter-app"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-app' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
-                                onClick={() => setFilter('filter-app')}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                APPLICATIONS
-                            </motion.li>
-                            <motion.li
-                                data-filter=".filter-client"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-client' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
-                                onClick={() => setFilter('filter-client')}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                CLIENT PROJECTS
-                            </motion.li>
-                        </ul>
+                                $ ls {name}
+                            </span>
+                        ))}
                     </div>
-                </motion.div>
+                </div>
 
+                {/* Project Cards */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
-                    animate={inView ? "show" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    animate={inView ? 'show' : 'hidden'}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                    {filteredProjects.map((project) => (
-                        <ProjectCard
-                            key={project.id}
-                            project={project}
-                        />
+                    {filteredProjects.map(project => (
+                        <ProjectCard key={project.id} project={project} />
                     ))}
                 </motion.div>
+
+                <div className="mt-12 text-green-400 text-xs">
+                    <span className="animate-pulse">▌</span> press <code>Ctrl+Z</code> to suspend
+                </div>
             </div>
         </section>
     );
