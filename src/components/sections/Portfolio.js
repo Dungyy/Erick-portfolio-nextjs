@@ -46,7 +46,7 @@ const Portfolio = () => {
                     transition={{ duration: 0.6 }}
                     className="mb-12"
                 >
-                    <h2 className="text-4xl font-bold mb-5 pb-5 relative text-crt">Professional Projects</h2>
+                    <h2 className="text-4xl font-bold mb-5 pb-5 relative text-crt/75">Professional Projects</h2>
                 </motion.div>
 
                 <motion.div
@@ -59,7 +59,7 @@ const Portfolio = () => {
                         <ul className="flex flex-wrap justify-center gap-2">
                             <motion.li
                                 data-filter="*"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === '*' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === '*' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
                                 onClick={() => setFilter('*')}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -68,7 +68,7 @@ const Portfolio = () => {
                             </motion.li>
                             <motion.li
                                 data-filter=".filter-web"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-web' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-web' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
                                 onClick={() => setFilter('filter-web')}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -77,7 +77,7 @@ const Portfolio = () => {
                             </motion.li>
                             <motion.li
                                 data-filter=".filter-app"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-app' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-app' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
                                 onClick={() => setFilter('filter-app')}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -86,7 +86,7 @@ const Portfolio = () => {
                             </motion.li>
                             <motion.li
                                 data-filter=".filter-client"
-                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-client' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-client' ? 'bg-primary text-crt/75 shadow-md' : 'text-crt/75 hover:bg-primary/10'}`}
                                 onClick={() => setFilter('filter-client')}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

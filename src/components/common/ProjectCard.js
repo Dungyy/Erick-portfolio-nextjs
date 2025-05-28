@@ -19,13 +19,13 @@ const ProjectCard = ({ project }) => {
                 )}
             </div>
             <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">{project.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-primary dark:text-gray-100">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies?.map((tech, index) => (
                         <span
                             key={index}
-                            className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-2 py-1 rounded"
+                            className="bg-primary text-xs px-2 py-1 rounded"
                         >
                             {tech}
                         </span>
@@ -37,7 +37,7 @@ const ProjectCard = ({ project }) => {
                             href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium transition-colors duration-200"
+                            className="text-crt/75 hover:text-accent  text-sm font-medium transition-colors duration-200"
                             aria-label={`View live demo of ${project.title}`}
                         >
                             Live Demo
@@ -48,7 +48,7 @@ const ProjectCard = ({ project }) => {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium transition-colors duration-200"
+                            className="text-crt/75 hover:text-accent  text-sm font-medium transition-colors duration-200"
                             aria-label={`View GitHub repository for ${project.title}`}
                         >
                             GitHub
