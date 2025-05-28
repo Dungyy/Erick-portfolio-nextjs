@@ -48,7 +48,7 @@ const Portfolio = () => {
             ref={ref}
             className="bg-black text-green-400 font-mono py-16 px-4 min-h-screen"
         >
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <motion.h2
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}

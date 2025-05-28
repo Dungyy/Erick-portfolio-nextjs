@@ -46,48 +46,97 @@ const Hero = () => {
     // Available terminal commands
     const commands = {
         help: () => [
-            'Available commands:',
+            '=== AVAILABLE COMMANDS ===',
             '  about     - Display developer information',
             '  skills    - List technical skills',
             '  projects  - Show portfolio projects',
             '  contact   - Get contact information',
+            '  experience - View work experience',
+            '  github    - View GitHub profile',
             '  clear     - Clear terminal screen',
-            '  whoami    - Display current user info'
+            '  whoami    - Display current user info',
+            '  date      - Show current date and time',
+            '',
+            'Type any command to execute'
         ],
         about: () => [
-            'Developer: Erick Munoz',
-            'Role: Full-Stack Software Developer',
+            '╔═════════════╗',
+            '║ ERICK MUNOZ ║',
+            '╚═════════════╝',
+            'Full-Stack Software Developer',
             'Specialization: MERN Stack & Security',
             'Location: Available for remote work',
             'Status: Open to new opportunities',
             '',
-            'Passionate about creating clean, secure solutions',
-            'that solve real-world problems.'
+            '>>> Passionate about creating clean, secure solutions',
+            '    that solve real-world problems with elegant code.'
         ],
         skills: () => [
-            '╭─ Frontend Technologies',
-            '├─ React.js, HTML5, CSS3, JavaScript (ES6+)',
-            '├─ Responsive Design, UI/UX',
-            '├─ Backend Technologies',
-            '├─ Node.js, Express.js, Python',
-            '├─ RESTful APIs, Database Management',
-            '├─ Tools & Infrastructure',
-            '├─ Git, Docker, Azure DevOps',
-            '└─ Security Testing, Shell Scripting'
+            '╭─── TECHNICAL SKILLS ───────────────────╮',
+            '│                                        │',
+            '├─ Frontend Technologies                 │',
+            '│  • React.js, Next.js, HTML5, CSS3      │',
+            '│  • JavaScript/TypeScript, TailwindCSS  │',
+            '│  • Responsive Design, UI/UX            │',
+            '│                                        │',
+            '├─ Backend Technologies                  │',
+            '│  • Node.js, Express.js, Python         │',
+            '│  • RESTful APIs, Bash                  │', 
+            '│  • MongoDB, PostgreSQL                 │',
+            '│                                        │',
+            '├─ DevOps & Tools                        │',
+            '│  • Git, Docker, CI/CD Pipelines        │',
+            '│  • Security Testing, Shell Scripting   │',
+            '│  • Azure DevOps, AWS                   │',
+            '╰────────────────────────────────────────╯'
         ],
         projects: () => [
-            'Loading portfolio projects...',
-            '→ Use "view portfolio" to see full project showcase'
+            '📂 FEATURED PROJECTS:',
+            '',
+            '1. [Portfolio Site 2.23] - This interactive terminal portfolio',
+            '   Tech: Next.js, React, TailwindCSS, Framer Motion',
+            '',
+            '2. [Dungyzon] - Full-stack shopping Amazon platform',
+            '   Tech: MERN Stack, Webscraper API',
+            '',
+            '3. [Crypto Tracker Dashboard] - Real-time coin monitoring',
+            '   Tech: React, Chart.js, Coin API',
+            '',
+            'Type "github" to see more projects or visit repository.'
         ],
         contact: () => [
-            '📧 Contact Information:',
-            '├─ Ready to discuss your next project',
-            '└─ Use "start contact" to get in touch'
+            '📧 CONTACT INFORMATION:',
+            '┌─────────────────────────────────────┐',
+            '│ Email: erick@example.com           │',
+            '│ LinkedIn: linkedin.com/in/erickmunoz│',
+            '│ GitHub: github.com/dungyy           │',
+            '└─────────────────────────────────────┘',
+            '',
+            '✉️  Ready to discuss your next project!',
+            'Use the contact button below or send a direct message.'
+        ],
+        github: () => [
+            'Opening GitHub profile...',
+            '',
+            '→ github.com/dungyy',
+            '',
+            'Repositories: 85+',
+            'Contributions: 1500+'
         ],
         whoami: () => [
             'erick_munoz@portfolio:~$ whoami',
-            'Full-Stack Developer | Security-Focused | Problem Solver'
+            '┌──────────────────────────────────────────┐',
+            '│ Full-Stack Developer | Security-Focused  │',
+            '│ Problem Solver | Open Source Contributor │',
+            '└──────────────────────────────────────────┘'
         ],
+        date: () => {
+            const now = new Date();
+            return [
+                `Current date: ${now.toLocaleDateString()}`,
+                `Current time: ${now.toLocaleTimeString()}`
+            ];
+        },
         clear: () => 'CLEAR'
     };
 
@@ -210,7 +259,7 @@ const Hero = () => {
         return (
             <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden bg-terminal">
                 <div className="container mx-auto relative z-10">
-                    <div className="max-w-6xl mx-auto">
+                    <div className="max-w-7xl mx-auto">
                         <div className="terminal-window">
                             <div className="terminal-header">
                                 <div className="terminal-buttons">
@@ -230,20 +279,20 @@ const Hero = () => {
     return (
         <section id="home" className="relative min-h-screen flex items-center px-4 overflow-hidden">
             <div className="container mx-auto relative z-10">
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-7xl mx-auto ">
                     {/* Terminal Window */}
                     <div className="terminal-window bg-terminal border border-gray-600 rounded-lg shadow-2xl">
                         {/* Terminal Header */}
-                        <div className="terminal-header bg-gray-800 px-4 py-3 rounded-t-lg flex items-center justify-between border-b border-gray-600">
+                        <div className="terminal-header bg-gray-800 px-2 sm:px-4 py-2 sm:py-3 rounded-t-lg flex items-center justify-between border-b border-gray-600">
                             <div className="terminal-buttons flex space-x-2">
-                                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
+                                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
+                                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
                             </div>
-                            <div className="terminal-title text-gray-300 text-sm font-mono">
+                            <div className="terminal-title text-gray-300 text-xs sm:text-sm font-mono truncate max-w-[180px] sm:max-w-xs">
                                 erick@portfolio: ~/dev/portfolio
                             </div>
-                            <div className="w-12"></div>
+                            <div className="w-8 sm:w-12"></div>
                         </div>
 
                         {/* Terminal Content */}

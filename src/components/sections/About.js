@@ -3,7 +3,7 @@
 const About = () => {
     return (
         <section id="about" className="bg-black text-green-400 font-mono py-16 px-4 min-h-screen">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <h2 className="text-[26px] md:text-[32px] mb-8 border-b border-green-600 pb-2 uppercase tracking-wider">
                     ~/whoami
                 </h2>
