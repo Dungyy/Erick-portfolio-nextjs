@@ -14,7 +14,6 @@ import Portfolio from '@/components/sections/Portfolio.js';
 import Resume from '@/components/sections/Resume.js';
 import Contact from '@/components/sections/Contact.js';
 import Footer from '@/components/layout/Footer.js';
-import BackToTop from '@/components/ui/BackToTop.js';
 
 export default function Home() {
   // Reference for the cursor sound effect
@@ -109,9 +108,6 @@ export default function Home() {
         {/* Footer with retro styling */}
         <Footer />
       </main>
-
-      {/* Back to top button */}
-      <BackToTop />
 
       {/* CRT Scanline Effect */}
       <div className="scanline"></div>

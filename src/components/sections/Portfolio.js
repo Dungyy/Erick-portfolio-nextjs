@@ -59,26 +59,34 @@ const Portfolio = () => {
                 </motion.h2>
 
                 {/* Filter Section */}
-                <div className="mb-10">
+                <motion.div
+                    className="mb-10"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 10 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
                     <p className="text-green-300 text-sm mb-2"># filters</p>
                     <div className="flex flex-wrap gap-4">
                         {filters.map(({ label, name }) => (
-                            <span
+                            <motion.span
                                 key={label}
                                 className={`cursor-pointer text-sm px-2 py-1 transition-all duration-200 ${filter === label
-                                        ? 'text-green-200 underline'
-                                        : 'hover:text-green-300'
+                                    ? 'text-green-200 underline'
+                                    : 'hover:text-green-300'
                                     }`}
                                 onClick={() => setFilter(label)}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
                             >
                                 $ ls {name}
-                            </span>
+                            </motion.span>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Project Cards */}
                 <motion.div
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     variants={containerVariants}
                     initial="hidden"
                     animate={inView ? 'show' : 'hidden'}

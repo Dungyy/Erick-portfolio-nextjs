@@ -14,15 +14,13 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: 'Erick Munoz | Software Developer',
   description: 'Erick Munoz - Full Stack Developer specializing in the MERN stack, web development, and application security.',
-  keywords: 'Erick Munoz, Software Developer, Full Stack Developer, MERN Stack, Web Development, Application Security'
+  keywords: 'Erick Munoz, Erick Munoz Ontiverios, Software Developer, Full Stack Developer, MERN Stack, Web Development, Application Security',
+  viewport: 'width=device-width, initial-scale=1'
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning={true}
