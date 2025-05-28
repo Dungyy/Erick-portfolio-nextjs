@@ -116,7 +116,7 @@ const Hero = () => {
             <div
                 className="absolute inset-0 bg-cover bg-center z-0"
                 style={{
-                    backgroundImage: "url('/public/img/pexels-roberto-nickson-2885320.jpg')",
+                    backgroundImage: "url('/img/pexels-roberto-nickson-2885320.jpg')",
                     backgroundBlendMode: "overlay"
                 }}
             >

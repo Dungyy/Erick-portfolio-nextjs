@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { projectData } from '@/constants/projectData';
 import ProjectCard from '@/components/common/ProjectCard';
+import Image from 'next/image';
 
 const Portfolio = () => {
     const [filter, setFilter] = useState('*');
@@ -19,7 +20,9 @@ const Portfolio = () => {
         if (filter === '*') {
             setFilteredProjects(projectData);
         } else {
-            setFilteredProjects(projectData.filter(project => project.category === filter.replace('filter-', '')));
+            setFilteredProjects(projectData.filter(project =>
+                project.category === filter.replace('filter-', '')
+            ));
         }
     }, [filter]);
 
@@ -45,17 +48,6 @@ const Portfolio = () => {
                     className="mb-12"
                 >
                     <h2 className="text-4xl font-bold mb-5 pb-5 relative text-primary">Professional Projects</h2>
-                </motion.div>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={inView ? "show" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {filteredProjects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                    ))}
                 </motion.div>
 
                 <motion.div
@@ -106,6 +98,20 @@ const Portfolio = () => {
                             </ul>
                         </div>
                     </div>
+                </motion.div>
+
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={inView ? "show" : "hidden"}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {filteredProjects.map((project) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                        />
+                    ))}
                 </motion.div>
             </div>
         </section>
