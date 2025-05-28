@@ -17,7 +17,7 @@ const Hero = () => {
     const [currentCommand, setCurrentCommand] = useState('');
     const [showPrompt, setShowPrompt] = useState(false);
     const terminalRef = useRef(null);
-    const [hasInteracted, setHasInteracted] = useState(false);
+    const [hasInteracted, setHasInteracted] = useState(null);
 
     // Terminal boot sequence lines
     const bootLines = [
