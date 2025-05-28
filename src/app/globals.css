@@ -10,12 +10,11 @@
   --primary-color: #cc6633;
   --secondary-color: #9dadbc;
   --dark-color: #ff0000;
-  --light-color: #FAF9F6;
-  background-color: saddlebrown;
+  --light-color: #faf9f6;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -28,8 +27,13 @@ body {
   font-weight: 500;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
 }
 
 /* Back to top button */
@@ -49,7 +53,17 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
 }
+/* Hover effects you could add */
+.card:hover {
+  border-color: theme("colors.crt");
+  box-shadow: 0 0 20px theme("colors.crt/20");
+}
 
+/* Terminal-style elements */
+.terminal-text {
+  color: theme("colors.crt");
+  font-family: theme("fontFamily.mono");
+}
 .back-to-top i {
   font-size: 28px;
   color: var(--dark-color);
@@ -260,8 +274,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Animation for loading spinner */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-spinner {

@@ -43,7 +43,7 @@ const Header = () => {
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="text-dark font-display font-bold text-2xl flex items-center gap-2">
-                        <span className={`transition-colors duration-300 ${isScrolled ? 'text-dark' : 'text-light'}`}>
+                        <span className={`transition-colors duration-300 ${isScrolled ? 'text-accent' : 'text-light'}`}>
                             Erick Munoz
                         </span>
                     </Link>

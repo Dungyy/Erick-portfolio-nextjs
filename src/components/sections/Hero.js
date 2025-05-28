@@ -80,20 +80,21 @@ const Hero = () => {
 
         const bootTimer4 = setTimeout(() => {
             setBootComplete(true);
+            setCommandLineVisible(true);
         }, 6200);
 
-        const commandLineTimer = setTimeout(() => {
-            setCommandLineVisible(true);
-        }, 7850);
+        // Remove the separate commandLineTimer
 
         return () => {
             clearTimeout(bootTimer1);
             clearTimeout(bootTimer2);
             clearTimeout(bootTimer3);
             clearTimeout(bootTimer4);
-            clearTimeout(commandLineTimer);
+            // Remove this line too
+            // clearTimeout(commandLineTimer);
         };
     }, [mounted]);
+
 
     // Don't render anything until mounted (prevents SSR issues)
     if (!mounted) {

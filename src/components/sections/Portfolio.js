@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { projectData } from '@/constants/projectData';
 import ProjectCard from '@/components/common/ProjectCard';
-import Image from 'next/image';
 
 const Portfolio = () => {
     const [filter, setFilter] = useState('*');
@@ -39,15 +38,15 @@ const Portfolio = () => {
     };
 
     return (
-        <section id="portfolio" ref={ref} className="py-16">
-            <div className="container mx-auto px-4">
+        <section id="portfolio" ref={ref} className="py-16 bg-gradient-to-r from-dark/90 to-dark/80 text-white overflow-hidden">
+            <div className="container mx-auto px-4 ">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
                     transition={{ duration: 0.6 }}
                     className="mb-12"
                 >
-                    <h2 className="text-4xl font-bold mb-5 pb-5 relative text-primary">Professional Projects</h2>
+                    <h2 className="text-4xl font-bold mb-5 pb-5 relative text-crt">Professional Projects</h2>
                 </motion.div>
 
                 <motion.div
@@ -57,46 +56,44 @@ const Portfolio = () => {
                     className="mb-10"
                 >
                     <div className="flex justify-center flex-wrap gap-2">
-                        <div className="bg-black/30 rounded-full p-1 backdrop-blur-sm shadow-lg border border-primary/20">
-                            <ul className="flex flex-wrap justify-center gap-2">
-                                <motion.li
-                                    data-filter="*"
-                                    className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === '*' ? 'bg-primary text-white shadow-md' : 'text-secondary hover:bg-primary/10'}`}
-                                    onClick={() => setFilter('*')}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    ALL PROJECTS
-                                </motion.li>
-                                <motion.li
-                                    data-filter=".filter-web"
-                                    className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-web' ? 'bg-primary text-white shadow-md' : 'text-secondary hover:bg-primary/10'}`}
-                                    onClick={() => setFilter('filter-web')}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    WEB DEVELOPMENT
-                                </motion.li>
-                                <motion.li
-                                    data-filter=".filter-app"
-                                    className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-app' ? 'bg-primary text-white shadow-md' : 'text-secondary hover:bg-primary/10'}`}
-                                    onClick={() => setFilter('filter-app')}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    APPLICATIONS
-                                </motion.li>
-                                <motion.li
-                                    data-filter=".filter-client"
-                                    className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-client' ? 'bg-primary text-white shadow-md' : 'text-secondary hover:bg-primary/10'}`}
-                                    onClick={() => setFilter('filter-client')}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    CLIENT PROJECTS
-                                </motion.li>
-                            </ul>
-                        </div>
+                        <ul className="flex flex-wrap justify-center gap-2">
+                            <motion.li
+                                data-filter="*"
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === '*' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                onClick={() => setFilter('*')}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                ALL PROJECTS
+                            </motion.li>
+                            <motion.li
+                                data-filter=".filter-web"
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-web' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                onClick={() => setFilter('filter-web')}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                WEB DEVELOPMENT
+                            </motion.li>
+                            <motion.li
+                                data-filter=".filter-app"
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-app' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                onClick={() => setFilter('filter-app')}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                APPLICATIONS
+                            </motion.li>
+                            <motion.li
+                                data-filter=".filter-client"
+                                className={`cursor-pointer py-2 px-4 text-sm font-semibold uppercase rounded-full transition-all duration-300 ${filter === 'filter-client' ? 'bg-primary text-crt shadow-md' : 'text-crt hover:bg-primary/10'}`}
+                                onClick={() => setFilter('filter-client')}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                CLIENT PROJECTS
+                            </motion.li>
+                        </ul>
                     </div>
                 </motion.div>
 
