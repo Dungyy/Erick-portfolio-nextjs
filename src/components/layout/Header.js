@@ -3,8 +3,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-
+import {
+    FaTimes,
+    FaBars
+} from "react-icons/fa";
 // Make sure the component is properly defined as a function
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -63,8 +65,8 @@ const Header = () => {
                                     <Link
                                         href={`#${item.id}`}
                                         className={`font-mono text-base transition-all duration-300 ${activeSection === item.id
-                                                ? isScrolled ? 'text-accent font-semibold' : 'text-accent font-semibold'
-                                                : isScrolled ? 'text-dark hover:text-primary' : 'text-light hover:text-accent'
+                                            ? isScrolled ? 'text-accent font-semibold' : 'text-accent font-semibold'
+                                            : isScrolled ? 'text-dark hover:text-primary' : 'text-light hover:text-accent'
                                             }`}
                                     >
                                         &lt;{item.label}/&gt;
@@ -80,35 +82,38 @@ const Header = () => {
                         aria-label="Toggle mobile menu"
                         onClick={toggleMenu}
                     >
-                        <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} ${isScrolled ? 'text-dark' : 'text-light'}`}></i>
+                        {isOpen
+                            ? <FaTimes className={`${isScrolled ? 'text-dark' : 'text-light'}`} />
+                            : <FaBars className={`${isScrolled ? 'text-dark' : 'text-light'}`} />
+                        }
                     </button>
-                </div>
 
-                {/* Mobile Menu */}
-                <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-4 bg-light border-3 border-dark shadow-retro-sm p-4`}>
-                    <ul className="space-y-3">
-                        {[
-                            { id: 'home', label: 'Home' },
-                            { id: 'about', label: 'About' },
-                            { id: 'skills', label: 'Skills' },
-                            { id: 'portfolio', label: 'Portfolio' },
-                            { id: 'resume', label: 'Experience' },
-                            { id: 'contact', label: 'Contact' }
-                        ].map(item => (
-                            <li key={item.id}>
-                                <Link
-                                    href={`#${item.id}`}
-                                    className={`font-mono text-base block px-3 py-2 border-l-4 ${activeSection === item.id
+                    {/* Mobile Menu */}
+                    <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-4 bg-light border-3 border-dark shadow-retro-sm p-4`}>
+                        <ul className="space-y-3">
+                            {[
+                                { id: 'home', label: 'Home' },
+                                { id: 'about', label: 'About' },
+                                { id: 'skills', label: 'Skills' },
+                                { id: 'portfolio', label: 'Portfolio' },
+                                { id: 'resume', label: 'Experience' },
+                                { id: 'contact', label: 'Contact' }
+                            ].map(item => (
+                                <li key={item.id}>
+                                    <Link
+                                        href={`#${item.id}`}
+                                        className={`font-mono text-base block px-3 py-2 border-l-4 ${activeSection === item.id
                                             ? 'border-accent text-accent font-semibold'
-                                            : 'border-transparent text-dark hover:text-primary hover:border-primary'
-                                        }`}
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    &lt;{item.label}/&gt;
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                                            : 'border-transparent text-dark hover:text-crt/75 hover:border-crt/75'
+                                            }`}
+                                        onClick={() => setIsOpen(false)}
+                                    >
+                                        &lt;{item.label}/&gt;
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
