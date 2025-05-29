@@ -51,7 +51,6 @@ const Hero = () => {
             '  skills    - List technical skills',
             '  projects  - Show portfolio projects',
             '  contact   - Get contact information',
-            '  experience - View work experience',
             '  github    - View GitHub profile',
             '  clear     - Clear terminal screen',
             '  whoami    - Display current user info',
@@ -178,7 +177,7 @@ const Hero = () => {
     useEffect(() => {
         if (!bootComplete || !showPrompt) return;
 
-        const autoCommands = ['whoami', 'help'];
+        const autoCommands = [];
         let commandIndex = 0;
 
         const executeAutoCommand = () => {

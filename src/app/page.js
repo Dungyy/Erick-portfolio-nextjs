@@ -83,8 +83,7 @@ export default function Home() {
     <div className="crt-container relative">
       {/* Header with navigation */}
       <Header />
-      <br />
-      <br />
+      
       {/* Main content */}
       <main id="main" className="relative z-10 overflow-hidden">
         {/* Hero section with retro terminal effect */}
