@@ -61,7 +61,7 @@ const Header = () => {
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center relative">
                     <Link href="/" className="text-light font-display font-bold text-2xl flex items-center gap-2">
-                        <span className={`transition-colors duration-300 ${isScrolled ? 'text-accent' : 'text-light'}`}>
+                        <span className={`transition-colors duration-300 ${isScrolled ? 'text-crt' : 'text-light'}`}>
                             Erick Munoz
                         </span>
                     </Link>
@@ -73,10 +73,10 @@ const Header = () => {
                                     <Link
                                         href={`#${item.id}`}
                                         className={`font-mono text-base transition-all duration-300 ${activeSection === item.id
-                                            ? 'text-accent font-semibold'
+                                            ? 'text-crt/75 font-semibold'
                                             : isScrolled
                                                 ? 'text-light hover:text-crt/75'
-                                                : 'text-light hover:text-accent'
+                                                : 'text-light hover:text-crt'
                                             }`}
                                     >
                                         &lt;{item.label}/&gt;
@@ -105,7 +105,7 @@ const Header = () => {
                                         <Link
                                             href={`#${item.id}`}
                                             className={`font-mono text-base block px-3 py-2 border-l-4 ${activeSection === item.id
-                                                ? 'border-accent text-accent font-semibold'
+                                                ? 'border-crt/75 text-crt font-semibold'
                                                 : 'border-transparent text-light hover:text-crt/75 hover:border-crt/75'
                                                 }`}
                                             onClick={() => setIsOpen(false)}

@@ -106,8 +106,8 @@ const Hero = () => {
         contact: () => [
             '📧 CONTACT INFORMATION:',
             '┌─────────────────────────────────────┐',
-            '│ Email: erick@example.com           │',
-            '│ LinkedIn: linkedin.com/in/erickmunoz│',
+            '│ Email: erickmunoztech@gmail.com     │',
+            '│ LinkedIn: linkedin.com/in/dungy     │',
             '│ GitHub: github.com/dungyy           │',
             '└─────────────────────────────────────┘',
             '',
